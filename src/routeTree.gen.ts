@@ -19,7 +19,7 @@ import { Route as VendorIndexRouteImport } from './routes/vendor.index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as VendorProductsRouteImport } from './routes/vendor.products'
 import { Route as ProductsProductIdRouteImport } from './routes/products.$productId'
-import { Route as ApiSeedAdminRouteImport } from './routes/api/seed-admin'
+import { Route as ApiPublicSeedAdminRouteImport } from './routes/api/public/seed-admin'
 
 const VendorRoute = VendorRouteImport.update({
   id: '/vendor',
@@ -71,9 +71,9 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   path: '/$productId',
   getParentRoute: () => ProductsRouteRoute,
 } as any)
-const ApiSeedAdminRoute = ApiSeedAdminRouteImport.update({
-  id: '/api/seed-admin',
-  path: '/api/seed-admin',
+const ApiPublicSeedAdminRoute = ApiPublicSeedAdminRouteImport.update({
+  id: '/api/public/seed-admin',
+  path: '/api/public/seed-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -84,22 +84,22 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/vendor': typeof VendorRouteWithChildren
-  '/api/seed-admin': typeof ApiSeedAdminRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/vendor/products': typeof VendorProductsRoute
   '/products/': typeof ProductsIndexRoute
   '/vendor/': typeof VendorIndexRoute
+  '/api/public/seed-admin': typeof ApiPublicSeedAdminRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
-  '/api/seed-admin': typeof ApiSeedAdminRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/vendor/products': typeof VendorProductsRoute
   '/products': typeof ProductsIndexRoute
   '/vendor': typeof VendorIndexRoute
+  '/api/public/seed-admin': typeof ApiPublicSeedAdminRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -109,11 +109,11 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/vendor': typeof VendorRouteWithChildren
-  '/api/seed-admin': typeof ApiSeedAdminRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/vendor/products': typeof VendorProductsRoute
   '/products/': typeof ProductsIndexRoute
   '/vendor/': typeof VendorIndexRoute
+  '/api/public/seed-admin': typeof ApiPublicSeedAdminRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,22 +124,22 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/vendor'
-    | '/api/seed-admin'
     | '/products/$productId'
     | '/vendor/products'
     | '/products/'
     | '/vendor/'
+    | '/api/public/seed-admin'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/cart'
     | '/checkout'
-    | '/api/seed-admin'
     | '/products/$productId'
     | '/vendor/products'
     | '/products'
     | '/vendor'
+    | '/api/public/seed-admin'
   id:
     | '__root__'
     | '/'
@@ -148,11 +148,11 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/vendor'
-    | '/api/seed-admin'
     | '/products/$productId'
     | '/vendor/products'
     | '/products/'
     | '/vendor/'
+    | '/api/public/seed-admin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -162,7 +162,7 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   VendorRoute: typeof VendorRouteWithChildren
-  ApiSeedAdminRoute: typeof ApiSeedAdminRoute
+  ApiPublicSeedAdminRoute: typeof ApiPublicSeedAdminRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -237,11 +237,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof ProductsRouteRoute
     }
-    '/api/seed-admin': {
-      id: '/api/seed-admin'
-      path: '/api/seed-admin'
-      fullPath: '/api/seed-admin'
-      preLoaderRoute: typeof ApiSeedAdminRouteImport
+    '/api/public/seed-admin': {
+      id: '/api/public/seed-admin'
+      path: '/api/public/seed-admin'
+      fullPath: '/api/public/seed-admin'
+      preLoaderRoute: typeof ApiPublicSeedAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -281,7 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   VendorRoute: VendorRouteWithChildren,
-  ApiSeedAdminRoute: ApiSeedAdminRoute,
+  ApiPublicSeedAdminRoute: ApiPublicSeedAdminRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
