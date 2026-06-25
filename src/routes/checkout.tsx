@@ -32,23 +32,21 @@ function CheckoutPage() {
 
     try {
       const { data: userData } = await supabase.auth.getUser();
-      const { data: order, error: orderErr } = await supabase
-        .from("orders")
-        .insert({
-          buyer_id: userData.user?.id ?? null,
-          buyer_name: form.name,
-          buyer_email: form.email,
-          buyer_phone: form.phone,
-          shipping_address: form.address,
-          total,
-        })
-        .select("id")
-        .single();
-      if (orderErr || !order) throw orderErr ?? new Error("Order request failed");
+      const orderId = crypto.randomUUID();
+      const { error: orderErr } = await supabase.from("orders").insert({
+        id: orderId,
+        buyer_id: userData.user?.id ?? null,
+        buyer_name: form.name,
+        buyer_email: form.email,
+        buyer_phone: form.phone,
+        shipping_address: form.address,
+        total,
+      });
+      if (orderErr) throw orderErr;
 
       const { error: itemsErr } = await supabase.from("order_items").insert(
         items.map((i) => ({
-          order_id: order.id,
+          order_id: orderId,
           product_id: i.productId,
           vendor_id: i.vendorId,
           product_name: i.name,
