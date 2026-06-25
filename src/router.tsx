@@ -14,3 +14,6 @@ export const getRouter = () => {
 
   return router;
 };
+
+// Export a top-level `router` so tools that resolve a `router` entry can find it.
+export const router = getRouter();
