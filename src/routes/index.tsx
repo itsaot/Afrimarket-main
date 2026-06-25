@@ -47,37 +47,26 @@ function LandingPage() {
       <AppHeader />
 
       {/* Hero */}
-      <section className="relative overflow-hidden px-4 pt-16 pb-20 sm:px-6 lg:pt-24 lg:pb-32">
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-0 right-0 hidden w-1/2 opacity-15 md:block"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1489493585363-d69421e0edd3?auto=format&fit=crop&w=1400&q=85')",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-background/80" />
-        <div className="relative mx-auto max-w-7xl">
-          <div className="max-w-3xl animate-reveal">
+      <section className="relative overflow-hidden px-4 pt-12 pb-16 sm:px-6 lg:pt-20 lg:pb-24">
+        <div className="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="animate-reveal order-2 lg:order-1">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-primary">
               Connecting African Excellence
             </span>
-            <h1 className="mt-6 text-5xl font-extrabold tracking-tighter text-balance sm:text-7xl">
-              Discover, Buy, and Grow <span className="text-primary italic">African</span>{" "}
-              Businesses.
+            <h1 className="mt-6 text-5xl font-extrabold tracking-tighter text-balance sm:text-6xl lg:text-7xl">
+              Shop Verified. <br />
+              Shop <span className="text-primary italic">African</span>.
             </h1>
             <p className="mt-8 max-w-xl text-lg text-muted-foreground text-pretty leading-relaxed">
-              A premium digital infrastructure connecting world-class entrepreneurs across Africa
-              with buyers through a trusted, high-performance marketplace.
+              Discover authentic products from trusted vendors across the continent. Real
+              entrepreneurs. Real value. One inclusive marketplace.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/products"
                 className="bg-primary text-primary-foreground px-8 py-4 text-sm font-bold tracking-wide uppercase hover:bg-primary/90 transition-transform active:scale-95"
               >
-                Browse Products
+                Shop Now
               </Link>
               <Link
                 to="/auth"
@@ -86,6 +75,35 @@ function LandingPage() {
               >
                 Sell on AfriMarket
               </Link>
+            </div>
+            <div className="mt-10 flex items-center gap-6 text-xs font-mono uppercase tracking-widest text-muted-foreground">
+              <div><span className="text-foreground font-bold text-base block">50k+</span>Merchants</div>
+              <div className="h-8 w-px bg-border" />
+              <div><span className="text-foreground font-bold text-base block">120k+</span>Products</div>
+              <div className="h-8 w-px bg-border" />
+              <div><span className="text-foreground font-bold text-base block">54</span>Countries</div>
+            </div>
+          </div>
+          <div className="relative order-1 lg:order-2">
+            <div className="absolute -top-4 -left-4 w-32 h-32 bg-primary/10 rounded-sm hidden lg:block" />
+            <div className="absolute -bottom-4 -right-4 w-40 h-40 border-2 border-primary rounded-sm hidden lg:block" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm ring-1 ring-black/10">
+              <img
+                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85"
+                alt="African women shopping at a vibrant marketplace"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur p-4 rounded-sm shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="size-10 rounded-full bg-primary/10 grid place-items-center">
+                    <ShieldCheck className="size-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Verified Vendor</p>
+                    <p className="text-sm font-bold">Pan-African Trust Network</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
