@@ -31,7 +31,7 @@ async function callLovableAI(messages: { role: string; content: string }[]) {
 }
 
 export const generateProductDescription = createServerFn({ method: "POST" })
-  .validator((input: unknown) => DescribeInput.parse(input))
+  .inputValidator((input: unknown) => DescribeInput.parse(input))
   .handler(async ({ data }) => {
     const content = await callLovableAI([
       {
@@ -53,7 +53,7 @@ const SuggestInput = z.object({
 });
 
 export const suggestSimilarProducts = createServerFn({ method: "POST" })
-  .validator((input: unknown) => SuggestInput.parse(input))
+  .inputValidator((input: unknown) => SuggestInput.parse(input))
   .handler(async ({ data }) => {
     if (data.available.length === 0) return { suggestions: [] as string[] };
     const content = await callLovableAI([
